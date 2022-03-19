@@ -19,9 +19,9 @@ class EmployeeService {
 	// 	);
 	// }
 
-	// static deleteByIds(ids: number[]): Promise<Response<{ id: number }>> {
-	// 	return ApiClient.delete<any, { id: number }>(`${_path}`, ids);
-	// }
+	static deleteById(id: number): Promise<Response<{ id: number }>> {
+		return ApiClient.delete<any, { id: number }>(`delete/${id}`);
+	}
 
 	// static update(data: any): Promise<Response<any>> {
 	// 	return ApiClient.put<any>('employee', data);

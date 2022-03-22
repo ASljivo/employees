@@ -1,2 +1,4 @@
-# employees
-Test project
+# Employees app
+Run project 
+yarn
+yarn start

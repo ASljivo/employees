@@ -23,7 +23,7 @@ export const Dashboard: FC = () => {
 
   useEffect(() => {
     getEmployees();
-  }, []);
+  });
 
   return (
     <div>

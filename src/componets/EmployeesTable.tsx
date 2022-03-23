@@ -50,7 +50,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   const deleteEmploye = (id: number) => {
     deleteApi().then(() => {
-      setEmployees([])
+      setEmployees([]);
       setEmployees(data.filter(item => item.id !== id));
     });
   };
@@ -59,7 +59,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
     const data = [...employees];
     if (selectedEmploye) {
       updateApi(selectedEmploye).then(() => {
-        const objIndex = data.findIndex((obj: Employee) => obj.id == 1);
+        const objIndex = data.findIndex((obj: Employee) => obj.id === 1);
         data[objIndex] = values;
         setEmployees(data);
         setShowEmployeForm(false);
@@ -76,7 +76,10 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   return (
     <>
-      {isLoadingGet || isLoadingDelete || isLoadingUpdate || isLoadingCreate && (
+      {(isLoadingGet ||
+        isLoadingDelete ||
+        isLoadingUpdate ||
+        isLoadingCreate) && (
         <Box
           sx={{
             display: 'flex',

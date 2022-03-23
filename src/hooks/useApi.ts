@@ -77,7 +77,7 @@ const useApi = <T extends unknown>(
     if (!skipOnLoad) {
       fetch(params, body);
     }
-  }, []);
+  });
 
   const { response, error, isLoading } = state;
   const data = response?.data || undefined;

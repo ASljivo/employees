@@ -21,11 +21,11 @@ const clientAPI: AxiosInstance = axios.create({
 });
 
 class ApiClient {
-	get<T = any, U = any>(url: string, params?: any, headers?: any): Promise<Response<U>> {
+	get<U = any>(url: string, params?: any, headers?: any): Promise<Response<U>> {
 		return this.invoke(clientAPI.get, url, { params, headers });
 	}
 
-	post<T = any, U = any>(url: string, data?: any, headers?: any): Promise<Response<U>> {
+	post< U = any>(url: string, data?: any, headers?: any): Promise<Response<U>> {
 		return this.invoke(clientAPI.post, url, data, { headers });
 	}
 
@@ -37,7 +37,7 @@ class ApiClient {
 		return this.invoke(clientAPI.delete, url, { data: data, headers });
 	}
 
-	invoke<T, U>(action: Function, ...args: any): Promise<Response<U>> {
+	invoke<U>(action: Function, ...args: any): Promise<Response<U>> {
 		return action(...args);
 	}
 

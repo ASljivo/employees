@@ -28,7 +28,7 @@ export const Dashboard: FC = () => {
   return (
     <div>
       {employees.length > 0 && (
-        <EmployeesTable data={employees} isLoadingGet={isLoading} />
+        <EmployeesTable data={employees} />
       )}
     </div>
   );

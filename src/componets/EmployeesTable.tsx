@@ -17,11 +17,10 @@ import { CreateEditEmployee } from '../componets/CreateEditEmployee';
 
 interface Props {
   data: Employee[];
-  isLoadingGet: boolean;
 }
 
 export const EmployeesTable: FC<Props> = (props: Props) => {
-  const { data, isLoadingGet } = props;
+  const { data } = props;
   const { fetch: deleteApi, isLoading: isLoadingDelete } = useApi(
     EmployeeService.deleteById
   );
@@ -76,10 +75,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   return (
     <>
-      {(isLoadingGet ||
-        isLoadingDelete ||
-        isLoadingUpdate ||
-        isLoadingCreate) && (
+      {(isLoadingDelete || isLoadingUpdate || isLoadingCreate) && (
         <Box
           sx={{
             display: 'flex',

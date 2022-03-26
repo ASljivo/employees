@@ -40,6 +40,13 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   const handleClose = () => {
     setShowEmployeForm(false);
+    setSelectedmploye({
+      id: 0,
+      employee_age: null,
+      employee_name: '',
+      employee_salary: null,
+      profile_image: ''
+    });
   };
 
   const editEmploye = (employe: Employee) => {
@@ -89,7 +96,12 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
         </Box>
       )}
       <Stack spacing={2} direction="row-reverse" sx={{ mb: 2 }}>
-        <Button variant="contained" onClick={handleClickOpenModal}>
+        <Button
+          variant="contained"
+          onClick={(): void => {
+            handleClickOpenModal();
+          }}
+        >
           Add new
         </Button>
       </Stack>
@@ -114,7 +126,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
           <TableBody>
             {employees.map(row => (
               <TableRow
-                key={row.id + row.employee_age}
+                key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">

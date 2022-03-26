@@ -7,23 +7,18 @@ import { EmployeesTable } from '../componets/EmployeesTable';
 import api from '../api/api.json';
 
 export const Dashboard: FC = () => {
-  const { fetch, isLoading } = useApi(EmployeeService.list);
+  const { fetch } = useApi(EmployeeService.list);
   const [employees, setEmployees] = useState<Employee[]>([]);
 
   const getEmployees = () => {
-    fetch().then(({ data }) => {
-
-      if (data) {
-        setEmployees(data.data);
-      } else {
+    fetch().then(() => {
         setEmployees(api.data);
-      }
     });
   };
 
   useEffect(() => {
     getEmployees();
-  });
+  },[]);
 
   return (
     <div>

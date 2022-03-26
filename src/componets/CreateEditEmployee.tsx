@@ -32,7 +32,9 @@ export const CreateEditEmployee: FC<Props> = (props: Props) => {
       employee_name: employe?.employee_name,
       employee_age: employe?.employee_age,
       employee_salary: employe?.employee_salary,
-      id: employe?.id ? employe?.id : Math.floor(Math.random() * 100) + 1
+      id: employe?.id
+        ? employe?.id
+        : Math.floor(Math.random() * (1000 - 100 + 1) + 100)
     },
     validationSchema: validationSchema,
     onSubmit: values => {

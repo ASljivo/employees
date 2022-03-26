@@ -54,11 +54,10 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
     setShowEmployeForm(true);
   };
 
-  const deleteEmploye = (id: number) => {
-    deleteApi().then(() => {
-      setEmployees([]);
-      setEmployees(data.filter(item => item.id !== id));
-    });
+  const deleteEmploye = (id: number) => {      
+    setEmployees([]);
+    setEmployees(data.filter(item => item.id !== id));
+    deleteApi().then(() => {});
   };
 
   const addEditEmploye = (values: Employee) => {
@@ -71,10 +70,10 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
         setShowEmployeForm(false);
       });
     } else {
+      data.unshift(values);
+      setEmployees(data);
+      setShowEmployeForm(false);
       createApi().then(() => {
-        data.unshift(values);
-        setEmployees(data);
-        setShowEmployeForm(false);
       });
     }
     handleClose();

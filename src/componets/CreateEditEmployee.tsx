@@ -37,8 +37,9 @@ export const CreateEditEmployee: FC<Props> = (props: Props) => {
         : Math.floor(Math.random() * (1000 - 100 + 1) + 100)
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
+    onSubmit: (values, { resetForm }) => {
       onSave(values);
+      resetForm();
     }
   });
   return (

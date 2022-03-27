@@ -1,30 +1,30 @@
 Arguments: 
-  /Users/arminsljivo/.nvm/versions/node/v12.8.0/bin/node /usr/local/bin/yarn add @typescript-eslint
+  /Users/arminsljivo/.nvm/versions/node/v14.17.0/bin/node /usr/local/bin/yarn add @typescript-eslint/no-unused-expressions
 
 PATH: 
-  /Users/arminsljivo/google-cloud-sdk/bin:/Users/arminsljivo/.nvm/versions/node/v12.8.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/arminsljivo/google-cloud-sdk/bin:/Users/arminsljivo/.nvm/versions/node/v12.8.0/bin
+  /Users/arminsljivo/.nvm/versions/node/v14.17.0/bin:/Users/arminsljivo/google-cloud-sdk/bin:/Users/arminsljivo/.nvm/versions/node/v12.8.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/arminsljivo/google-cloud-sdk/bin:/Users/arminsljivo/.nvm/versions/node/v12.8.0/bin
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  12.8.0
+  14.17.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@typescript-eslint: Request "https://registry.yarnpkg.com/@typescript-eslint" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66997:18)
+  Error: https://registry.yarnpkg.com/@typescript-eslint%2fno-unused-expressions: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
-      at Request.emit (events.js:203:13)
+      at Request.emit (events.js:376:20)
       at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141634:10)
-      at Request.emit (events.js:203:13)
+      at Request.emit (events.js:376:20)
       at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141556:12)
-      at Object.onceWrapper (events.js:291:20)
-      at IncomingMessage.emit (events.js:208:15)
-      at endReadableNT (_stream_readable.js:1168:12)
-      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+      at Object.onceWrapper (events.js:482:28)
+      at IncomingMessage.emit (events.js:388:22)
+      at endReadableNT (internal/streams/readable.js:1336:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {

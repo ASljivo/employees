@@ -40,13 +40,6 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   const handleClose = () => {
     setShowEmployeForm(false);
-    setSelectedmploye({
-      id: 0,
-      employee_age: null,
-      employee_name: '',
-      employee_salary: null,
-      profile_image: ''
-    });
   };
 
   const editEmploye = (employe: Employee) => {
@@ -62,14 +55,17 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
 
   const addEditEmploye = (values: Employee) => {
     const data = [...employees];
-    if (selectedEmploye) {
+    if (selectedEmploye?.id) {
+      console.log(1)
+      const objIndex = data.findIndex((obj: Employee) => obj.id === 1);
+      console.log('objIndex', objIndex)
+      data[objIndex] = values;
+      setEmployees(data);
+      setShowEmployeForm(false);
       updateApi(selectedEmploye).then(() => {
-        const objIndex = data.findIndex((obj: Employee) => obj.id === 1);
-        data[objIndex] = values;
-        setEmployees(data);
-        setShowEmployeForm(false);
       });
     } else {
+      console.log(2)
       data.unshift(values);
       setEmployees(data);
       setShowEmployeForm(false);

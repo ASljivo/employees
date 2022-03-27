@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from '@mui/material/Button';
@@ -18,7 +18,7 @@ const validationSchema = yup.object({
 
 type Props = {
   show: boolean;
-  employe?: Employee;
+  employe?: Employee | undefined;
   onSave: any;
   handleClose: any;
 };
@@ -27,7 +27,6 @@ export const CreateEditEmployee: FC<Props> = (props: Props) => {
   const { show, employe, onSave, handleClose } = props;
 
   const formik = useFormik({
-    enableReinitialize: employe ? true : false,
     initialValues: {
       employee_name: employe?.employee_name,
       employee_age: employe?.employee_age,
@@ -37,11 +36,17 @@ export const CreateEditEmployee: FC<Props> = (props: Props) => {
         : Math.floor(Math.random() * (1000 - 100 + 1) + 100)
     },
     validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values, formikHelper) => {
       onSave(values);
-      resetForm();
+      handleClose(formikHelper.resetForm);
     }
   });
+
+  useEffect(() => {
+    if (employe) {
+      formik.setValues(employe);
+    }
+  }, [employe]);
   return (
     <div>
       <Dialog open={show} onClose={handleClose}>

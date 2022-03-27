@@ -32,18 +32,21 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
   );
   const [employees, setEmployees] = useState<Employee[]>(data);
   const [showEmployeForm, setShowEmployeForm] = useState<boolean>(false);
-  const [selectedEmploye, setSelectedmploye] = useState<Employee>();
+  const [selectedEmploye, setSelectedEmploye] = useState<Employee|undefined>();
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   const handleClickOpenModal = () => {
     setShowEmployeForm(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (resetForm: any) => {
     setShowEmployeForm(false);
+    resetForm()
   };
 
-  const editEmploye = (employe: Employee) => {
-    setSelectedmploye(employe);
+  const editEmploye = (employe: Employee, index: number) => {
+    setSelectedEmploye(employe);
+    setSelectedIndex(index)
     setShowEmployeForm(true);
   };
 
@@ -56,23 +59,19 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
   const addEditEmploye = (values: Employee) => {
     const data = [...employees];
     if (selectedEmploye?.id) {
-      console.log(1)
-      const objIndex = data.findIndex((obj: Employee) => obj.id === 1);
-      console.log('objIndex', objIndex)
-      data[objIndex] = values;
+      data[selectedIndex] = values;
       setEmployees(data);
       setShowEmployeForm(false);
+      setSelectedIndex(-1)
       updateApi(selectedEmploye).then(() => {
       });
     } else {
-      console.log(2)
       data.unshift(values);
       setEmployees(data);
       setShowEmployeForm(false);
       createApi().then(() => {
       });
     }
-    handleClose();
   };
 
   return (
@@ -119,7 +118,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {employees.map(row => (
+            {employees.map((row, index) => (
               <TableRow
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -135,7 +134,7 @@ export const EmployeesTable: FC<Props> = (props: Props) => {
                     <Button
                       variant="contained"
                       color="secondary"
-                      onClick={(): void => editEmploye(row)}
+                      onClick={(): void => editEmploye(row, index)}
                     >
                       Edit
                     </Button>
